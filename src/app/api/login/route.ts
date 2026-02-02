@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import type { UserTable } from './users'
 
-type ResponseUser = Omit<UserTable, 'password'>
+type ResponseUser = Omit<UserTable, 'password'> & { accessToken: string }
 
 // Mock data for demo purpose
 import { users } from './users'
@@ -18,8 +18,12 @@ export async function POST(req: Request) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _, ...filteredUserData } = user
 
+    // Generate access token for custom auth
+    const accessToken = `token_${Date.now()}_${user.id}`
+
     response = {
-      ...filteredUserData
+      ...filteredUserData,
+      accessToken
     }
 
     return NextResponse.json(response)
