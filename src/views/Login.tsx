@@ -260,6 +260,16 @@ const Login = ({ mode }: { mode: SystemMode }) => {
                 Create an account
               </Typography>
             </div>
+            <Divider className='gap-2'>or</Divider>
+            <Button
+              color='secondary'
+              className='self-center text-textPrimary'
+              startIcon={<img src='/images/logos/google.png' alt='Google' width={22} />}
+              sx={{ '& .MuiButton-startIcon': { marginInlineEnd: 3 } }}
+              onClick={() => null}
+            >
+              Sign in with Google
+            </Button>
           </form>
         </div>
       </div>
